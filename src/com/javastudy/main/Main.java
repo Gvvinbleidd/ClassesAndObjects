@@ -14,6 +14,7 @@ public class Main {
         firstBus.model = "50-местный";
         firstBus.busNumber = 4852;
 
+        asf
         secondBus.name = "Второй автобус";
         secondBus.color = "Красный";
         secondBus.model = "100-местный";
@@ -33,6 +34,11 @@ public class Main {
         secondBus.showBusNumber();
         secondBus.showModel();
         secondBus.showColor();
+
+        lastBus.showName();
+        lastBus.showBusNumber();
+        lastBus.showModel();
+        lastBus.showColor();
 
         lastBus.showName();
         lastBus.showBusNumber();
