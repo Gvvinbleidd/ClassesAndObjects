@@ -14,7 +14,6 @@ public class Main {
         firstBus.model = "50-местный";
         firstBus.busNumber = 4852;
 
-        asf
         secondBus.name = "Второй автобус";
         secondBus.color = "Красный";
         secondBus.model = "100-местный";
