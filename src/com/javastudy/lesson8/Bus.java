@@ -1,4 +1,4 @@
-package com.javastudy.lesson12;
+package com.javastudy.lesson8;
 
 public class Bus {
     public String name;
