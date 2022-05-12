@@ -10,4 +10,13 @@ public class Ostrich extends Birds{
         System.out.println("I Ostrich and I scared");
         System.out.println(super.getWings());
     }
+
+    public void walk(String str) {
+        System.out.println("Ho-ho-ho" + str);
+    }
+
+    @Override  //переопределение методов
+    public void walk2() {
+        System.out.println("YaY");
+    }
 }

@@ -14,6 +14,10 @@ public class Birds {
         System.out.println("ko-ko-ko");
     }
 
+    public void walk2() {
+        System.out.println("Hmmmmm");
+    }
+
     public String getName() {
         return name;
     }
