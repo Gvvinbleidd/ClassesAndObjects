@@ -254,6 +254,29 @@ public class Main {
         System.out.println();
         char[] chars1 = {'H','e','l','l','o',' ','!'};
         System.out.println("\nМетод принимает массив символов и преобразует их в строку\nРезультат: " + String.copyValueOf(chars1));
+
+        //lesson27 - StringBuilder and StringBuffer
+        String str6 = new String("Java");
+        StringBuilder stringBuilder = new StringBuilder(20); //по умолчанию capacity(размер буфера) = 16 символов
+        stringBuilder.ensureCapacity(30); //установление минимального гарантированного размера буфера
+        System.out.println("\nУрок 27: StringBuilder и StringBuffer\n\nРазмер буфера StringBuilder.\nРезультат: " + stringBuilder.capacity());
+
+        System.out.println("\nПример использования методов классов String и StringBuilder: ");
+        System.out.println(str6.concat(" Hot")); //при использовании каждый раз создается новый объект и при этом объект класса String остается неименным
+        System.out.println(str6);
+        StringBuilder stringBuilder1 = new StringBuilder("Java");
+        System.out.println(stringBuilder1.append(" Hot")); //объект изменяется
+        System.out.println(stringBuilder1);
+
+        stringBuilder1.setLength(15);
+        System.out.println("\nДлинна буфера:\nРезультат: " + stringBuilder1.capacity());
+        StringBuilder stringBuilder2 = new StringBuilder("Java");
+        stringBuilder2.insert(1,"G");
+        System.out.println("\nМетод ''вставить'': \nРезультат: " + stringBuilder2);
+
+        System.out.println("\nУдаление символа по индексу.\nРезультат: " +stringBuilder2.deleteCharAt(3));
+
+        System.out.println("\nМетод reverse - переворачивает строку задом наперед.\nРезультат: " + stringBuilder2.reverse());
     }
 
     //lesson 25 - клонирование
