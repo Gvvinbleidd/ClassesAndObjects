@@ -22,6 +22,7 @@ import com.javastudy.lesson24.Boeing737;
 import com.javastudy.lesson24.Mi8;
 import com.javastudy.lesson24.Test2;
 import com.javastudy.lesson25.DollySheet;
+import com.javastudy.lesson28.*;
 import com.javastudy.lesson8.Bus;
 import com.javastudy.lesson8.References;
 import com.javastudy.lesson9.Operation;
@@ -277,6 +278,34 @@ public class Main {
         System.out.println("\nУдаление символа по индексу.\nРезультат: " +stringBuilder2.deleteCharAt(3));
 
         System.out.println("\nМетод reverse - переворачивает строку задом наперед.\nРезультат: " + stringBuilder2.reverse());
+
+        //lesson28 - Generic / параметризация / обобщения
+        Body body = new Body();
+
+        SmallHead smallHead = new SmallHead();
+        MediumHead mediumHead = new MediumHead();
+        BigHead bigHead = new BigHead();
+
+        Leg leg = new Leg();
+
+        Robot<SmallHead> robot = new Robot<SmallHead>(body, smallHead);
+        System.out.println("\nУрок 28 - Generic / Параметризация / Обобщение.\n\nПриделываем голову роботу и она: ");
+        robot.getHead().burn();
+
+        Robot<BigHead> robot1 = new Robot<>(body, bigHead);
+        System.out.println("\nПриделываем голову роботу и она:");
+        robot1.getHead().turn();
+
+        //при работе с параметризацией мы не можем присвоить данной ссылке robot = robot1, т.к. внутри разные значения параметров
+
+        //Есть понятие сырой тип:
+        Robot robot2 = new Robot(body, mediumHead); //в этом случае авт. присваивается значение параметра = Object
+        robot2 = robot1;
+
+        Robot robot3 = new Robot(body, mediumHead);
+        robot1.<SmallHead, SmallHead>parametr(smallHead, smallHead);
+
+        robot2.foo2(robot1);
     }
 
     //lesson 25 - клонирование
