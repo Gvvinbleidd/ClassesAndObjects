@@ -23,9 +23,12 @@ import com.javastudy.lesson24.Mi8;
 import com.javastudy.lesson24.Test2;
 import com.javastudy.lesson25.DollySheet;
 import com.javastudy.lesson28.*;
+import com.javastudy.lesson29.ErrorExample;
 import com.javastudy.lesson8.Bus;
 import com.javastudy.lesson8.References;
 import com.javastudy.lesson9.Operation;
+
+import java.io.FileNotFoundException;
 
 public class Main {
 
@@ -306,6 +309,17 @@ public class Main {
         robot1.<SmallHead, SmallHead>parametr(smallHead, smallHead);
 
         robot2.foo2(robot1);
+
+        //lesson 29 - исключения, ошибки и их иерархия. Блоки try, catch, finally
+        ErrorExample errorExample = new ErrorExample();
+        System.out.println("\nУрок 29:");
+        errorExample.foo();
+
+        try {
+            errorExample.foo2();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     //lesson 25 - клонирование
