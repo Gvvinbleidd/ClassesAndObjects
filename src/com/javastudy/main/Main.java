@@ -24,11 +24,14 @@ import com.javastudy.lesson24.Test2;
 import com.javastudy.lesson25.DollySheet;
 import com.javastudy.lesson28.*;
 import com.javastudy.lesson29.ErrorExample;
+import com.javastudy.lesson30.PerimeterException;
+import com.javastudy.lesson30.PerimeterSquare;
 import com.javastudy.lesson8.Bus;
 import com.javastudy.lesson8.References;
 import com.javastudy.lesson9.Operation;
 
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class Main {
 
@@ -320,6 +323,91 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        //lesson30 - Создание собственных исключений. Оператор Throw
+        PerimeterSquare perimeterSquare = new PerimeterSquare();
+        try {
+            perimeterSquare.getPerimeter("g");
+        } catch (PerimeterException e) {
+            e.printStackTrace();
+        }
+
+        //lesson31 - Потоки ввода/вывода (I/O)
+
+        System.out.println("\nУрок 31 - потоки ввода/вывода:\nДалее читаем из файла: ");
+
+        FileInputStream fis = null;
+        InputStreamReader isr = null;
+        int z = 0;
+
+        try {
+            fis = new FileInputStream("D:/JAVA Projects/Classes and objects/1.txt");
+            isr =new InputStreamReader(fis, "UTF-8");
+            while ((z = isr.read()) != -1){
+                System.out.println((char) z);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                fis.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                isr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        FileOutputStream fileOutputStream = null; // полностью перезаписывает файл
+        String str7 = "Hot";
+        try {
+            fileOutputStream = new FileOutputStream("D:/JAVA Projects/Classes and objects/2.txt");
+            fileOutputStream.write(str7.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        FileWriter fr = null; //каждый раз дописывает инфу в файл
+        String str8 = "Hot ";
+
+        try {
+            fr = new FileWriter("D:/JAVA Projects/Classes and objects/3.txt", true);
+            fr.write(str8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        File file = new File("D:/JAVA Projects/Classes and objects/4.txt");
+        FileWriter fr2 = null;
+        String str9 = "New file";
+
+        try {
+            fr2 = new FileWriter(file);
+            fr2.write(str9);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fr2.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     //lesson 25 - клонирование
