@@ -26,6 +26,8 @@ import com.javastudy.lesson28.*;
 import com.javastudy.lesson29.ErrorExample;
 import com.javastudy.lesson30.PerimeterException;
 import com.javastudy.lesson30.PerimeterSquare;
+import com.javastudy.lesson32.Cat;
+import com.javastudy.lesson32.Serializator;
 import com.javastudy.lesson8.Bus;
 import com.javastudy.lesson8.References;
 import com.javastudy.lesson9.Operation;
@@ -351,16 +353,20 @@ public class Main {
         } catch (IOException e){
             e.printStackTrace();
         } finally {
-            try {
-                fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
-            try {
-                isr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (isr != null) {
+                try {
+                    isr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -384,10 +390,12 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {
-                fr.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(fr != null) {
+                try {
+                    fr.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -401,13 +409,30 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {
-                fr2.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(fr2 != null) {
+                try {
+                    fr2.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
+        //lesson32 - Сериализация и десериализация
+        Cat cat = new Cat();
+        cat.setName("Tom");
+
+        Serializator serializator = new Serializator();
+        System.out.println("Сериализация прошла успешно?: " + serializator.serialization(cat));
+
+
+        Serializator serializator1 = new Serializator();
+        try {
+           Cat cat1 = serializator1.deserialization();
+            System.out.println("Десериализация кота: " + cat1.getName());
+        } catch (InvalidObjectException e) {
+            e.printStackTrace();
+        }
     }
 
     //lesson 25 - клонирование
