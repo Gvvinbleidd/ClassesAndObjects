@@ -489,7 +489,7 @@ public class Main {
 
         System.out.println("\nОбращение к первому элементу коллекции list2: " + list2.getFirst());
         System.out.println("Обращение ко второму элементу коллекции list2: " + list2.getLast());
-
+        System.out.println("Good job");
 
     }
 
