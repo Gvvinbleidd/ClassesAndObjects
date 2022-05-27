@@ -28,12 +28,17 @@ import com.javastudy.lesson30.PerimeterException;
 import com.javastudy.lesson30.PerimeterSquare;
 import com.javastudy.lesson32.Cat;
 import com.javastudy.lesson32.Serializator;
+import com.javastudy.lesson34.Person;
 import com.javastudy.lesson8.Bus;
 import com.javastudy.lesson8.References;
 import com.javastudy.lesson9.Operation;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -433,6 +438,59 @@ public class Main {
         } catch (InvalidObjectException e) {
             e.printStackTrace();
         }
+
+        //lesson34 - Collections ArrayList & LinkedList
+
+        List<Person> list = new ArrayList<>();
+
+        Person person1 = new Person("Иван");
+        Person person2 = new Person("Петр");
+        Person person3 = new Person("Владимир");
+
+        list.add(person1);
+        list.add(person2);
+        list.add(person3);
+
+        Person person1FromCollection = list.get(0);
+        Person person2FromCollection = list.get(1);
+
+        boolean remove = list.remove(person3);
+
+        System.out.println("\nУрок 34 - Коллекции: \nПервый элемент коллекции: " + person1FromCollection);
+        System.out.println("Второй элемент коллекции: " + person2FromCollection);
+        System.out.println("3 элемент коллекции удален?: " + remove);
+
+
+        System.out.println("Сколько элементов у нас в коллекции: " + list.size());
+        System.out.println("Коллекция пустая?: " +  list.isEmpty());
+
+        System.out.println("Проверка наличия 1 элемента: " + list.contains(person1) + "\nПроверка наличия 2 элемента: " + list.contains(person2)+ "\nПроверка наличия 3 элемента: " + list.contains(person3));
+
+        System.out.println("Индекс объекта person2: " + list.indexOf(person2));
+
+        Iterator<Person> iterator = list.iterator();
+
+        while (iterator.hasNext()){
+            Person iterPerson = iterator.next();
+            System.out.println(iterPerson);
+        }
+
+        List<Person> list1 = new LinkedList<>();
+        list1.size();
+
+        LinkedList<Person> list2 = new LinkedList<>();
+        Person person4 = new Person("Евгений");
+        Person person5 = new Person("Олег");
+        Person person6 = new Person("Андрей");
+
+        list2.add(person4);
+        list2.add(person5);
+        list2.add(person6);
+
+        System.out.println("\nОбращение к первому элементу коллекции list2: " + list2.getFirst());
+        System.out.println("Обращение ко второму элементу коллекции list2: " + list2.getLast());
+
+
     }
 
     //lesson 25 - клонирование
